@@ -1,0 +1,75 @@
+package Controlador;
+import java.util.Scanner;
+
+public class CAula 
+{
+    private int cantidadHombres, cantidadMujeres, totalAlumnos;
+    private String informacion;
+    private double porcentajeH, porcentajeM;
+    private Scanner rnd = new Scanner(System.in);
+    
+    public void ingresoDatos()
+    {
+        System.out.print("Ingrese cantidad de hombres: ");
+        cantidadHombres = rnd.nextInt();
+        System.out.print("Ingrese cantidad de mujeres: ");
+        cantidadMujeres = rnd.nextInt();
+    }
+    
+    public void totalAlumnosClase()
+    {
+        totalAlumnos = cantidadHombres+cantidadMujeres;
+    }
+    
+    public void porcentajeAlumnos()
+    {
+        porcentajeH = (cantidadHombres*100)/totalAlumnos;
+        porcentajeM = (cantidadMujeres*100)/totalAlumnos;
+    }
+    
+    public void otrosDatos()
+    {
+        if(porcentajeH == porcentajeM)
+            informacion = "Porcentajes Iguales";
+        else if(porcentajeH > porcentajeM)
+            informacion = "Porcentaje Hombres es mayor";
+        else
+            informacion = "Porcentaje Mujeres es mayor";
+    }
+    
+    public void mostrarDatos()
+    {
+        this.totalAlumnosClase();
+        this.porcentajeAlumnos();
+        this.otrosDatos();
+        
+        System.out.println("\n----------------------------"
+                +"\nCantidad Hombres: "+cantidadHombres
+                +"\nCantidad Mujeres: "+cantidadMujeres
+                +"\nPorcentaje Hombres: "+porcentajeH+"%"
+                +"\nPorcentaje Mujeres: "+porcentajeM+"%"
+                +"\n----------------------------"        
+                +"\nInformacion: "+informacion
+                +"\n----------------------------" );
+    }
+}
+
+---------------------------------------------------------------------------------------
+
+package Biblioteca;
+import Controlador.CAula;
+
+public class ejercicioOrientadoObjetos{
+
+    public static void main(String[] args) 
+    {
+        CAula objAula = new CAula();
+        
+        //Ingreso de datos
+        objAula.ingresoDatos();
+        
+        //Mostrar resultados
+        objAula.mostrarDatos();
+    }
+    
+}
